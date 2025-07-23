@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 
 import { useRouter } from 'next/navigation'
 
-import Grid from '@mui/material/Grid2'
+import { Grid } from '@mui/material'
 
 import { Typography, Backdrop, CircularProgress, Container, TextField } from '@mui/material'
 

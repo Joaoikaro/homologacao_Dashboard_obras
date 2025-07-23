@@ -1,6 +1,3 @@
-// Next Imports
-import { useParams } from 'next/navigation'
-
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
 
@@ -26,9 +23,6 @@ import StyledVerticalNavExpandIcon from '@menu/styles/vertical/StyledVerticalNav
 import menuItemStyles from '@core/styles/vertical/menuItemStyles'
 import menuSectionStyles from '@core/styles/vertical/menuSectionStyles'
 
-// Menu Data Imports
-// import menuData from '@/data/navigation/verticalMenuData'
-
 type RenderExpandIconProps = {
   open?: boolean
   transitionDuration?: VerticalMenuContextProps['transitionDuration']
@@ -45,15 +39,13 @@ const RenderExpandIcon = ({ open, transitionDuration }: RenderExpandIconProps) =
   </StyledVerticalNavExpandIcon>
 )
 
-const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
+const VerticalMenu = ({ scrollMenu }: Props) => {
   // Hooks
   const theme = useTheme()
   const verticalNavOptions = useVerticalNav()
-  const params = useParams()
 
   // Vars
   const { isBreakpointReached, transitionDuration } = verticalNavOptions
-  const { lang: locale } = params
 
   const ScrollWrapper = isBreakpointReached ? 'div' : PerfectScrollbar
 
@@ -81,25 +73,16 @@ const VerticalMenu = ({ dictionary, scrollMenu }: Props) => {
         menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
       >
         <SubMenu
-          label={dictionary['navigation'].dashboards}
+          label={"dashboards"}
           icon={<i className='ri-home-smile-line' />}
         >
-          <MenuItem href={`/${locale}/dashboards/obras`}>{dictionary['navigation'].obras
-          }</MenuItem>
-          <MenuItem href={`/${locale}/dashboards/financeiro`}>{dictionary['navigation'].financeiro}</MenuItem>
+          <MenuItem href={`/dashboards/obras`}>obras</MenuItem>
+          <MenuItem href={`/dashboards/financeiro`}>financeiro</MenuItem>
         </SubMenu>
 
 
       </Menu>
-      {/* <Menu
-        popoutMenuOffset={{ mainAxis: 10 }}
-        menuItemStyles={menuItemStyles(verticalNavOptions, theme)}
-        renderExpandIcon={({ open }) => <RenderExpandIcon open={open} transitionDuration={transitionDuration} />}
-        renderExpandedMenuItemIcon={{ icon: <i className='ri-circle-line' /> }}
-        menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
-      >
-        <GenerateVerticalMenu menuData={menuData(dictionary)} />
-      </Menu> */}
+
     </ScrollWrapper>
   )
 }
