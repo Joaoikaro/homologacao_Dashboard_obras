@@ -76,8 +76,8 @@ const VerticalMenu = ({ scrollMenu }: Props) => {
           label={"dashboards"}
           icon={<i className='ri-home-smile-line' />}
         >
-          <MenuItem href={`/dashboards/obras`}>obras</MenuItem>
-          <MenuItem href={`/dashboards/financeiro`}>financeiro</MenuItem>
+          <MenuItem href={`/dashboard/obras`}>obras</MenuItem>
+          <MenuItem href={`/dashboard/financeiro`}>financeiro</MenuItem>
         </SubMenu>
 
 

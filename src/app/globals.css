@@ -18,7 +18,7 @@
 }
 
 [data-dark] {
-  --backdrop-color: #00000059;
+  --backdrop-color: #00000099;
   --mui-mainColorChannels-shadow: var(--mui-mainColorChannels-darkShadow);
 }
 

@@ -14,7 +14,7 @@ import type { FinanceiroSaldoContaResponse } from '@/types/financeiroSaldoConta'
 import formatarData from '@/utils/formatarData'
 import formatarDinheiroReal from '@/utils/formatarDinheiroReal'
 import { useFinanceiroSaldoConta } from '@/hooks/useFinanceiroSaldoConta'
-import capitalizeText from '../../../../../../../../utils/captitalizeText';
+import capitalizeText from '@/utils/captitalizeText'
 
 
 const TabelaSaldosMobile = () => {
@@ -86,14 +86,14 @@ const TabelaSaldosMobile = () => {
             }}
           >
             <CardContent style={{ padding: 12 }}>
-              <div style={{display: 'flex', flexDirection: 'row', gap: 4}}>
-              <Typography variant="caption" color="text.secondary">
-                {row.nBancoFormatado || '---'}
-              </Typography>
-              -
-              <Typography variant="subtitle2"  fontWeight={600}>
-                {capitalizeText(row.nomeConta) || 'Indisponível'}
-              </Typography>
+              <div style={{ display: 'flex', flexDirection: 'row', gap: 4 }}>
+                <Typography variant="caption" color="text.secondary">
+                  {row.nBancoFormatado || '---'}
+                </Typography>
+                -
+                <Typography variant="subtitle2" fontWeight={600}>
+                  {capitalizeText(row.nomeConta) || 'Indisponível'}
+                </Typography>
               </div>
 
               <Typography
@@ -110,10 +110,10 @@ const TabelaSaldosMobile = () => {
                 {formatarDinheiroReal(row.vlSaldo)}
               </Typography>
 
-              <div style={{display: 'flex'}}>
-              <Typography variant="caption" color="text.secondary">
-                {row.dataUltConciliacao ? formatarData(row.dataUltConciliacao) : 'Sem conciliação'}
-              </Typography>
+              <div style={{ display: 'flex' }}>
+                <Typography variant="caption" color="text.secondary">
+                  {row.dataUltConciliacao ? formatarData(row.dataUltConciliacao) : 'Sem conciliação'}
+                </Typography>
               </div>
             </CardContent>
           </CardContent>
