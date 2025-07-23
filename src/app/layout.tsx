@@ -11,9 +11,9 @@ import '@/app/globals.css'
 import '@assets/iconify-icons/generated-icons.css'
 
 export const metadata = {
-  title: 'MaxBackup',
+  title: 'GerenteMax',
   description:
-    'MaxBackup'
+    'GerenteMax Dashboard'
 }
 
 const RootLayout = async (props: ChildrenType) => {
@@ -28,7 +28,7 @@ const RootLayout = async (props: ChildrenType) => {
         <InitColorSchemeScript attribute='data' defaultMode={systemMode} />
         {children}
       </body>
-    </html> 
+    </html>
   )
 }
 

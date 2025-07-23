@@ -2,6 +2,9 @@
 import styled from '@emotion/styled'
 import classnames from 'classnames'
 
+// Type Imports
+import type { getDictionary } from '@/utils/getDictionary'
+
 // Component Imports
 import HorizontalMenu from './HorizontalMenu'
 
@@ -26,8 +29,9 @@ const StyledDiv = styled.div<StyledDivProps>`
     `
     padding: ${themeConfig.layoutPadding}px;
 
-    ${isContentCompact &&
-    `
+    ${
+      isContentCompact &&
+      `
       margin-inline: auto;
       max-inline-size: ${themeConfig.compactContentWidth}px;
     `
@@ -35,13 +39,13 @@ const StyledDiv = styled.div<StyledDivProps>`
   `}
 `
 
-const Navigation = () => {
+const Navigation = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
   const { settings } = useSettings()
   const { isBreakpointReached } = useHorizontalNav()
 
   // Vars
-  const headerContentCompact = settings.navbarContentWidth === 'wide'
+  const headerContentCompact = settings.navbarContentWidth === 'compact'
 
   return (
     <div
@@ -56,7 +60,7 @@ const Navigation = () => {
           className: classnames(horizontalLayoutClasses.navigationContentWrapper, 'flex items-center is-full plb-2.5')
         })}
       >
-        <HorizontalMenu />
+        <HorizontalMenu dictionary={dictionary} />
       </StyledDiv>
     </div>
   )

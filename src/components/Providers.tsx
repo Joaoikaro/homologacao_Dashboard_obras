@@ -1,11 +1,14 @@
 import type { ChildrenType, Direction } from '@core/types'
 
+import { NextAuthProvider } from '@/contexts/nextAuthProvider'
 import { VerticalNavProvider } from '@menu/contexts/verticalNavContext'
 import { SettingsProvider } from '@core/contexts/settingsContext'
 import ThemeProvider from '@components/theme'
+import ReduxProvider from '@/redux-store/ReduxProvider'
 
+import AppReactToastify from '@/lib/styles/AppReactToastify'
 import { getMode, getSettingsFromCookie, getSystemMode } from '@core/utils/serverHelpers'
-import SnackbarProviders from './snackbarProviders'
+import { ReactQueryProvider } from '@/providers/ReactProvider'
 
 type Props = ChildrenType & {
   direction: Direction
@@ -19,17 +22,18 @@ const Providers = async (props: Props) => {
   const systemMode = await getSystemMode()
 
   return (
-    <VerticalNavProvider>
-      <SettingsProvider settingsCookie={settingsCookie} mode={mode}>
+    <NextAuthProvider basePath={process.env.NEXTAUTH_BASEPATH}>
+      <VerticalNavProvider>
         <SettingsProvider settingsCookie={settingsCookie} mode={mode}>
           <ThemeProvider direction={direction} systemMode={systemMode}>
-            <SnackbarProviders>
-              {children}
-            </SnackbarProviders>
+            <ReactQueryProvider>
+              <ReduxProvider>{children}</ReduxProvider>
+              <AppReactToastify direction={direction} hideProgressBar />
+            </ReactQueryProvider>
           </ThemeProvider>
         </SettingsProvider>
-      </SettingsProvider>
-    </VerticalNavProvider>
+      </VerticalNavProvider>
+    </NextAuthProvider>
   )
 }
 

@@ -1,57 +1,80 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+// React Imports
+import { useEffect, useRef, useState } from 'react'
 
-import Image from 'next/image'
+// Hook Imports
+import { useMediaQuery, useTheme } from '@mui/material'
 
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
 
 const Logo = () => {
+  // Refs
   const logoTextRef = useRef<HTMLSpanElement>(null)
+
+  // Hooks
   const { isHovered, isBreakpointReached } = useVerticalNav()
   const { settings } = useSettings()
+  const { layout, mode } = settings
 
-  const { layout, mode = 'light' } = settings || {}
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
+
+  const [logoSrc, setLogoSrc] = useState('/images/gerentemax/G-logo.png')
+
+  const getTargetLogo = () => {
+    if (isMobile && mode === 'light') {
+      return '/images/gerentemax/Logo.png'
+    } else if (isMobile && mode !== 'light') {
+      return '/images/gerentemax/logo_branca.png'
+    } else if (!isHovered && layout === 'collapsed') {
+      return '/images/gerentemax/G-logo.png'
+    } else if (mode === 'light') {
+      return '/images/gerentemax/Logo.png'
+    } else {
+      return '/images/gerentemax/logo_branca.png'
+    }
+  }
+
+  useEffect(() => {
+    const targetSrc = getTargetLogo()
+
+    if (targetSrc !== logoSrc) {
+      const isGoingToGLogo = targetSrc.includes('G-logo')
+
+      if (isGoingToGLogo) {
+        const timeout = setTimeout(() => {
+          setLogoSrc(targetSrc)
+        }, 261)
+
+
+        return () => clearTimeout(timeout)
+      } else {
+        setLogoSrc(targetSrc)
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isHovered, layout, mode, isMobile])
 
   useEffect(() => {
     if (layout !== 'collapsed') return
 
     if (logoTextRef?.current) {
       if (!isBreakpointReached && !isHovered) {
-        logoTextRef.current.classList.add('hidden')
+        logoTextRef.current?.classList.add('hidden')
       } else {
         logoTextRef.current.classList.remove('hidden')
       }
     }
   }, [isHovered, layout, isBreakpointReached])
 
-  const getLogoSrc = () => {
-    if (layout === 'collapsed' && !isHovered) return '/images/G-logo.png'
-
-    return mode === 'dark' ? '/images/logo_branca.png' : '/images/logo.png'
-  }
-
-  const getLogoSize = () => {
-    return layout === 'collapsed' && !isHovered
-      ? { width: 40, height: 40, className: 'w-10 max-w-10' }
-      : { width: 300, height: 40, className: 'w-9/12 h-auto' }
-  }
-
-  const { width, height, className } = getLogoSize()
-
   return (
     <div className='flex items-center min-bs-[24px]'>
-      <Image
-        src={getLogoSrc()}
-        alt="Logo"
-        width={width}
-        height={height}
-        priority
-        className={className}
-        onError={(e) => {
-          e.currentTarget.src = '/images/logo.png'
-        }}
+      <img
+        className='w-full'
+        src={logoSrc}
+        alt="GerenteMax"
       />
     </div>
   )

@@ -1,26 +1,16 @@
 import { create } from 'zustand'
 
-import type { SignInResponse } from '@/types/auth'
+import type { LoggedInUser } from '@/types/user'
 
-interface UserLogadoInfoState {
-  user: SignInResponse | null
-  setUser: (user: SignInResponse) => void
-  clearUser: () => void
+interface userLogadoInfoState {
+  user: LoggedInUser
+  setUser: (user: LoggedInUser) => void
 }
 
-export const useUserLogadoInfo = create<UserLogadoInfoState>((set) => {
-  const storedUser = localStorage.getItem('usuario')
-  const parsedUser = storedUser ? JSON.parse(storedUser) as SignInResponse : null
-
-  return {
-    user: parsedUser,
-    setUser: (user: SignInResponse) => {
-      localStorage.setItem('usuario', JSON.stringify(user))
-      set({ user })
-    },
-    clearUser: () => {
-      localStorage.removeItem('usuario')
-      set({ user: null })
-    },
-  }
-})
+export const useUserLogadoInfo = create<userLogadoInfoState>((set) => ({
+  user: {} as LoggedInUser,
+  setUser: (user: LoggedInUser) =>
+    set(() => ({
+      user,
+    })),
+}))

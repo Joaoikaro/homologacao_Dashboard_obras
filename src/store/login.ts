@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 
 interface LoginType {
-  Nome: string
-  Senha: string
+  email: string
+  senha: string
 }
 
 interface LoginState {

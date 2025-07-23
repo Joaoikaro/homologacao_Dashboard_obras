@@ -1,10 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
-import { useRef, useState } from 'react'
+// React Imports
+import { useEffect, useRef, useState } from 'react'
 import type { MouseEvent } from 'react'
 
-import { useRouter } from 'next/navigation'
+// Next Imports
+import { useParams, useRouter } from 'next/navigation'
 
+// MUI Imports
 import { styled } from '@mui/material/styles'
 import Badge from '@mui/material/Badge'
 import Avatar from '@mui/material/Avatar'
@@ -14,15 +18,25 @@ import Paper from '@mui/material/Paper'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import MenuList from '@mui/material/MenuList'
 import Typography from '@mui/material/Typography'
-
+import Divider from '@mui/material/Divider'
 import Button from '@mui/material/Button'
 
+import { useSession } from 'next-auth/react'
+
+import { useAuthStore } from '@/store/useAuthStore';
+
+// Type Imports
+import type { Locale } from '@configs/i18n'
+
+// Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
-import { useAuthStore } from '@/store/useAuthStore'
 import { useUserLogadoInfo } from '@/store/userLogadoInfo'
-import { useUserInitials } from './../../../hooks/UseUserInitials';
 
+// Util Imports
+import { getLocalizedUrl } from '@/utils/i18n'
+import { useAuth } from '@/hooks/useAuth'
 
+// Styled component for badge content
 const BadgeContentSpan = styled('span')({
   width: 8,
   height: 8,
@@ -33,16 +47,33 @@ const BadgeContentSpan = styled('span')({
 })
 
 const UserDropdown = () => {
+  // States
   const [open, setOpen] = useState(false)
 
+  // Refs
   const anchorRef = useRef<HTMLDivElement>(null)
 
+  // Hooks
   const router = useRouter()
-  const { signOut } = useAuthStore()
-  const { user } = useUserLogadoInfo()
-  const initials = useUserInitials(user?.Nome)
-
+  const { data: session } = useSession()
   const { settings } = useSettings()
+  const { lang: locale } = useParams()
+  const { signOut } = useAuthStore()
+  const { user, setUser } = useUserLogadoInfo()
+
+  const { loggedInUser } = useAuth()
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const usuarioLogado = await loggedInUser
+
+      if (usuarioLogado?.data) {
+        setUser(usuarioLogado.data)
+      }
+    }
+
+    fetchUser()
+  }, [setUser])
 
   const handleDropdownOpen = () => {
     !open ? setOpen(true) : setOpen(false)
@@ -50,7 +81,7 @@ const UserDropdown = () => {
 
   const handleDropdownClose = (event?: MouseEvent<HTMLLIElement> | (MouseEvent | TouchEvent), url?: string) => {
     if (url) {
-      router.push(url)
+      router.push(getLocalizedUrl(url, locale as Locale))
     }
 
     if (anchorRef.current && anchorRef.current.contains(event?.target as HTMLElement)) {
@@ -61,9 +92,21 @@ const UserDropdown = () => {
   }
 
   const handleUserLogout = async () => {
-    await signOut()
-    router.push('/login')
+    try {
+      await signOut()
+    } catch (error) {
+      console.error(error)
+    }
   }
+
+  // const handleSystem = async () => {
+  //   try {
+  //     handleDropdownClose()
+  //     await logoutSystem()
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
 
   return (
     <>
@@ -76,12 +119,11 @@ const UserDropdown = () => {
       >
         <Avatar
           ref={anchorRef}
-          alt='Avatar'
+          alt={session?.user?.name || ''}
+          src={session?.user?.image || ''}
           onClick={handleDropdownOpen}
           className='cursor-pointer bs-[38px] is-[38px]'
-        >
-          {initials}
-        </Avatar>
+        />
       </Badge>
       <Popper
         open={open}
@@ -102,16 +144,35 @@ const UserDropdown = () => {
               <ClickAwayListener onClickAway={e => handleDropdownClose(e as MouseEvent | TouchEvent)}>
                 <MenuList>
                   <div className='flex items-center plb-2 pli-4 gap-2' tabIndex={-1}>
-                    <Avatar alt='avatar' >
-                     {initials}
-                    </Avatar>
+                    <Avatar alt={session?.user?.name || ''} src={session?.user?.image || ''} />
                     <div className='flex items-start flex-col'>
                       <Typography className='font-medium' color='text.primary'>
-                        {user !== null ? user.Nome : 'Indisponivel'}
+                        {user.nome || ''}
                       </Typography>
-                      <Typography variant='caption'>{user !== null ? user.Email : 'Indisponivel'}</Typography>
+                      <Typography variant='caption'>{user.email || ''}</Typography>
                     </div>
                   </div>
+                  <Divider className='mlb-1' />
+                  {/* <MenuItem className='gap-3' onClick={e => handleDropdownClose(e, '/pages/user-profile')}>
+                    <i className='ri-user-3-line' />
+                    <Typography color='text.primary'>My Profile</Typography>
+                  </MenuItem>
+                  <MenuItem className='gap-3' onClick={e => handleDropdownClose(e, '/pages/account-settings')}>
+                    <i className='ri-settings-4-line' />
+                    <Typography color='text.primary'>Settings</Typography>
+                  </MenuItem>
+                  <MenuItem className='gap-3' onClick={e => handleDropdownClose(e, '/pages/pricing')}>
+                    <i className='ri-money-dollar-circle-line' />
+                    <Typography color='text.primary'>Pricing</Typography>
+                  </MenuItem>
+                  <MenuItem className='gap-3' onClick={e => handleDropdownClose(e, '/pages/faq')}>
+                    <i className='ri-question-line' />
+                    <Typography color='text.primary'>FAQ</Typography>
+                  </MenuItem> */}
+                  {/* <MenuItem className='gap-3' onClick={handleSystem}>
+                    <i className='ri-mac-line' />
+                    <Typography color='text.primary'>Sistemas</Typography>
+                  </MenuItem> */}
                   <div className='flex items-center plb-2 pli-4'>
                     <Button
                       fullWidth
