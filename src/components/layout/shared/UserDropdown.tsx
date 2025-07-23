@@ -25,14 +25,11 @@ import { useSession } from 'next-auth/react'
 
 import { useAuthStore } from '@/store/useAuthStore';
 
-// Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 import { useUserLogadoInfo } from '@/store/userLogadoInfo'
 
-// Util Imports
 import { useAuth } from '@/hooks/useAuth'
 
-// Styled component for badge content
 const BadgeContentSpan = styled('span')({
   width: 8,
   height: 8,
@@ -94,6 +91,7 @@ const UserDropdown = () => {
     }
   }
 
+
   return (
     <>
       <Badge
@@ -139,6 +137,7 @@ const UserDropdown = () => {
                     </div>
                   </div>
                   <Divider className='mlb-1' />
+
                   <div className='flex items-center plb-2 pli-4'>
                     <Button
                       fullWidth

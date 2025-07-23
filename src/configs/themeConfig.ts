@@ -58,13 +58,13 @@ const themeConfig: Config = {
   semiDark: false, // true, false
   layout: 'vertical', // 'vertical', 'collapsed', 'horizontal'
   layoutPadding: 24, // Common padding for header, content, footer layout components (in px)
-  compactContentWidth: 1440, // in px
+  compactContentWidth: 1440, 
   navbar: {
     type: 'fixed', // 'fixed', 'static'
-    contentWidth: 'full', // 'full', 'full'
+    contentWidth: 'full',  
     floating: false, //! true, false (This will not work in the Horizontal Layout)
-    detached: true, //! true, false (This will not work in the Horizontal Layout or floating navbar is enabled)
-    blur: true // true, false
+    detached: true, 
+    blur: true 
   },
   contentWidth: 'full', // 'full', 'full'
   footer: {
