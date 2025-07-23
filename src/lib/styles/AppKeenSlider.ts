@@ -4,13 +4,10 @@
 import { styled } from '@mui/material/styles'
 import type { Theme } from '@mui/material/styles'
 
-// Third-party Imports
 import 'keen-slider/keen-slider.min.css'
 
-// Styled Components
 const AppKeenSlider = styled('div')(({ theme }: { theme: Theme }) => ({
   '& .keen-slider': {
-    // Keen Slider handles RTL internally and thus, we need to set the direction to LTR
     direction: 'ltr',
 
     '& .keen-slider__slide': {
@@ -49,7 +46,6 @@ const AppKeenSlider = styled('div')(({ theme }: { theme: Theme }) => ({
     }
   },
 
-  // Fade
   '& .fader': {
     position: 'relative',
     overflow: 'hidden',
@@ -68,7 +64,6 @@ const AppKeenSlider = styled('div')(({ theme }: { theme: Theme }) => ({
     }
   },
 
-  // Navigation Controls
   '& .navigation-wrapper': {
     position: 'relative',
     '& .arrow': {

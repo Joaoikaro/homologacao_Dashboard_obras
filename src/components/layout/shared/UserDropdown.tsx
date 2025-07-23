@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import type { MouseEvent } from 'react'
 
 // Next Imports
-import { useParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 // MUI Imports
 import { styled } from '@mui/material/styles'
@@ -25,15 +25,11 @@ import { useSession } from 'next-auth/react'
 
 import { useAuthStore } from '@/store/useAuthStore';
 
-// Type Imports
-import type { Locale } from '@configs/i18n'
-
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
 import { useUserLogadoInfo } from '@/store/userLogadoInfo'
 
 // Util Imports
-import { getLocalizedUrl } from '@/utils/i18n'
 import { useAuth } from '@/hooks/useAuth'
 
 // Styled component for badge content
@@ -57,7 +53,6 @@ const UserDropdown = () => {
   const router = useRouter()
   const { data: session } = useSession()
   const { settings } = useSettings()
-  const { lang: locale } = useParams()
   const { signOut } = useAuthStore()
   const { user, setUser } = useUserLogadoInfo()
 
@@ -81,7 +76,7 @@ const UserDropdown = () => {
 
   const handleDropdownClose = (event?: MouseEvent<HTMLLIElement> | (MouseEvent | TouchEvent), url?: string) => {
     if (url) {
-      router.push(getLocalizedUrl(url, locale as Locale))
+      router.push(url)
     }
 
     if (anchorRef.current && anchorRef.current.contains(event?.target as HTMLElement)) {
@@ -98,15 +93,6 @@ const UserDropdown = () => {
       console.error(error)
     }
   }
-
-  // const handleSystem = async () => {
-  //   try {
-  //     handleDropdownClose()
-  //     await logoutSystem()
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
 
   return (
     <>
@@ -153,26 +139,6 @@ const UserDropdown = () => {
                     </div>
                   </div>
                   <Divider className='mlb-1' />
-                  {/* <MenuItem className='gap-3' onClick={e => handleDropdownClose(e, '/pages/user-profile')}>
-                    <i className='ri-user-3-line' />
-                    <Typography color='text.primary'>My Profile</Typography>
-                  </MenuItem>
-                  <MenuItem className='gap-3' onClick={e => handleDropdownClose(e, '/pages/account-settings')}>
-                    <i className='ri-settings-4-line' />
-                    <Typography color='text.primary'>Settings</Typography>
-                  </MenuItem>
-                  <MenuItem className='gap-3' onClick={e => handleDropdownClose(e, '/pages/pricing')}>
-                    <i className='ri-money-dollar-circle-line' />
-                    <Typography color='text.primary'>Pricing</Typography>
-                  </MenuItem>
-                  <MenuItem className='gap-3' onClick={e => handleDropdownClose(e, '/pages/faq')}>
-                    <i className='ri-question-line' />
-                    <Typography color='text.primary'>FAQ</Typography>
-                  </MenuItem> */}
-                  {/* <MenuItem className='gap-3' onClick={handleSystem}>
-                    <i className='ri-mac-line' />
-                    <Typography color='text.primary'>Sistemas</Typography>
-                  </MenuItem> */}
                   <div className='flex items-center plb-2 pli-4'>
                     <Button
                       fullWidth

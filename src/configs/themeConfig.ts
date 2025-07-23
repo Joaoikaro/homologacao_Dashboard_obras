@@ -50,9 +50,9 @@ export type Config = {
 }
 
 const themeConfig: Config = {
-  templateName: 'MaxBackup',
-  homePageUrl: '/dashboard/backups',
-  settingsCookieName: 'GerenteMax-Backup',
+  templateName: 'GerenteMax',
+  homePageUrl: '/dashboard/inicio',
+  settingsCookieName: 'GerenteMax-Settings',
   mode: 'dark', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
   semiDark: false, // true, false

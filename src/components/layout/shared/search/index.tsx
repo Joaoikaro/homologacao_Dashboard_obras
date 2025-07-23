@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 
 // Next Imports
-import { useParams, useRouter, usePathname } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 
 // MUI Imports
 import IconButton from '@mui/material/IconButton'
@@ -17,8 +17,6 @@ import classnames from 'classnames'
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from 'cmdk'
 import { Title, Description } from '@radix-ui/react-dialog'
 
-// Type Imports
-import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import DefaultSuggestions from './DefaultSuggestions'
@@ -27,9 +25,6 @@ import NoResult from './NoResult'
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
-
-// Util Imports
-import { getLocalizedUrl } from '@/utils/i18n'
 
 // Style Imports
 import './styles.css'
@@ -68,7 +63,6 @@ const transformedData = data.reduce((acc: Section[], item) => {
     id: item.id,
     name: item.name,
     url: item.url,
-    excludeLang: item.excludeLang,
     icon: item.icon,
     shortcut: item.shortcut
   }
@@ -83,7 +77,7 @@ const transformedData = data.reduce((acc: Section[], item) => {
 }, [])
 
 // SearchItem Component for introduce the shortcut keys
-const SearchItem = ({ children, shortcut, value, currentPath, url, onSelect = () => {} }: SearchItemProps) => {
+const SearchItem = ({ children, shortcut, value, currentPath, url, onSelect = () => { } }: SearchItemProps) => {
   return (
     <CommandItem
       onSelect={onSelect}
@@ -150,7 +144,6 @@ const NavSearch = () => {
   const router = useRouter()
   const pathName = usePathname()
   const { settings } = useSettings()
-  const { lang: locale } = useParams()
   const { isBreakpointReached } = useVerticalNav()
   const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
 
@@ -158,7 +151,7 @@ const NavSearch = () => {
   const onSearchItemSelect = (item: Item) => {
     item.url.startsWith('http')
       ? window.open(item.url, '_blank')
-      : router.push(item.excludeLang ? item.url : getLocalizedUrl(item.url, locale as Locale))
+      : router.push(item.url)
     setOpen(false)
   }
 
@@ -247,7 +240,7 @@ const NavSearch = () => {
                         shortcut={item.shortcut}
                         key={index}
                         currentPath={pathName}
-                        url={getLocalizedUrl(item.url, locale as Locale)}
+                        url={item.url}
                         value={`${item.name} ${section.title} ${item.shortcut}`}
                         onSelect={() => onSearchItemSelect(item)}
                       >

@@ -3,7 +3,6 @@ import { useRef } from 'react'
 
 // Next Imports
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
 
 // MUI Imports
 import { styled } from '@mui/material/styles'
@@ -13,7 +12,6 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
 import type { ChildrenType } from '@core/types'
-import type { Locale } from '@configs/i18n'
 
 // Component Imports
 import NavHeader from '@menu/components/vertical-menu/NavHeader'
@@ -25,7 +23,6 @@ import useHorizontalNav from '@menu/hooks/useHorizontalNav'
 
 // Util Imports
 import { mapHorizontalToVerticalMenu } from '@menu/utils/menuUtils'
-import { getLocalizedUrl } from '@/utils/i18n'
 
 const StyledBoxForShadow = styled('div')(({ theme }) => ({
   top: 60,
@@ -37,9 +34,8 @@ const StyledBoxForShadow = styled('div')(({ theme }) => ({
   width: 'calc(100% + 15px)',
   height: theme.mixins.toolbar.minHeight,
   transition: 'opacity .15s ease-in-out',
-  background: `linear-gradient(var(--mui-palette-background-default) ${
-    theme.direction === 'rtl' ? '95%' : '5%'
-  }, rgb(var(--mui-palette-background-defaultChannel) / 0.85) 30%, rgb(var(--mui-palette-background-defaultChannel) / 0.5) 65%, rgb(var(--mui-palette-background-defaultChannel) / 0.3) 75%, transparent)`,
+  background: `linear-gradient(var(--mui-palette-background-default) ${theme.direction === 'rtl' ? '95%' : '5%'
+    }, rgb(var(--mui-palette-background-defaultChannel) / 0.85) 30%, rgb(var(--mui-palette-background-defaultChannel) / 0.5) 65%, rgb(var(--mui-palette-background-defaultChannel) / 0.3) 75%, transparent)`,
   '&.scrolled': {
     opacity: 1
   }
@@ -48,7 +44,6 @@ const StyledBoxForShadow = styled('div')(({ theme }) => ({
 const VerticalNavContent = ({ children }: ChildrenType) => {
   // Hooks
   const { isBreakpointReached } = useHorizontalNav()
-  const { lang: locale } = useParams()
 
   // Refs
   const shadowRef = useRef(null)
@@ -74,7 +69,7 @@ const VerticalNavContent = ({ children }: ChildrenType) => {
   return (
     <>
       <NavHeader>
-        <Link href={getLocalizedUrl('/', locale as Locale)}>
+        <Link href='/'>
           <Logo />
         </Link>
         <NavCollapseIcons
@@ -88,13 +83,13 @@ const VerticalNavContent = ({ children }: ChildrenType) => {
       <ScrollWrapper
         {...(isBreakpointReached
           ? {
-              className: 'bs-full overflow-y-auto overflow-x-hidden',
-              onScroll: container => scrollMenu(container, false)
-            }
+            className: 'bs-full overflow-y-auto overflow-x-hidden',
+            onScroll: container => scrollMenu(container, false)
+          }
           : {
-              options: { wheelPropagation: false, suppressScrollX: true },
-              onScrollY: container => scrollMenu(container, true)
-            })}
+            options: { wheelPropagation: false, suppressScrollX: true },
+            onScrollY: container => scrollMenu(container, true)
+          })}
       >
         {mapHorizontalToVerticalMenu(children)}
       </ScrollWrapper>
