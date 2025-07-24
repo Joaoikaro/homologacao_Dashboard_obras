@@ -4,9 +4,8 @@ import type { BaseTextFieldProps } from '@mui/material';
 import { TextField } from '@mui/material'
 import type { Control } from 'react-hook-form';
 import { Controller } from 'react-hook-form'
-import { useSettings } from '../hooks/useSettings';
 
-// import { useTheme } from '../store/theme'
+import { useSettings } from '../hooks/useSettings';
 
 interface TextFieldMaxTypes extends BaseTextFieldProps {
   name: string
