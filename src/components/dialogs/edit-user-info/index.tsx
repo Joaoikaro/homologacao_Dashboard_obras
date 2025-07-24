@@ -4,7 +4,7 @@
 import { useState } from 'react'
 
 // MUI Imports
-import { Grid } from '@mui/material'
+import { Grid, FormControlLabel } from '@mui/material'
 import Dialog from '@mui/material/Dialog'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
@@ -19,7 +19,6 @@ import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
 import Switch from '@mui/material/Switch'
 import IconButton from '@mui/material/IconButton'
-import { FormControlLabel } from '@mui/material'
 
 type EditUserInfoData = {
   firstName?: string
