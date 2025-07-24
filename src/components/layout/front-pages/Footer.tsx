@@ -10,6 +10,8 @@ import IconButton from '@mui/material/IconButton'
 import classnames from 'classnames'
 
 // Component Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
+
 import Link from '@components/Link'
 import Logo from '@components/layout/shared/Logo'
 
@@ -18,7 +20,6 @@ import { frontLayoutClasses } from '@layouts/utils/layoutClasses'
 
 // Styles Imports
 import styles from './styles.module.css'
-import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 const Footer = () => {
   return (
