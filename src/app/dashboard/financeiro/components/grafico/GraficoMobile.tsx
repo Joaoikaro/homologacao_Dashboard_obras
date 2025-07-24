@@ -138,7 +138,10 @@ const GraficoMobile = () => {
     )
   }
 
-  const CustomToolTip = ({ active, payload }: TooltipProps<any, any>) => {
+  const CustomToolTip = (props: TooltipProps<any, any>) => {
+    const { active } = props;
+    const payload = (props as any).payload;
+
     if (!active || !payload || !payload.length) return null;
 
     const item = payload[0].payload;

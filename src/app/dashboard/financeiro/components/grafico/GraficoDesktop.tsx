@@ -108,7 +108,9 @@ const GraficoDesktop = () => {
 
   }, [periodo, agrupamento])
 
-  const CustomToolTip = ({ active, payload }: TooltipProps<any, any>) => {
+  const CustomToolTip = (props: TooltipProps<any, any>) => {
+    const { active, payload } = props as any;
+
     if (!active || !payload || !payload.length) return null;
 
     const item = payload[0].payload;
