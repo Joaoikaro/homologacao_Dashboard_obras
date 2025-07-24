@@ -34,6 +34,7 @@ type Footer = {
 }
 
 export type Config = {
+  toastPosition: any
   templateName: string
   homePageUrl: string
   settingsCookieName: string
@@ -58,13 +59,13 @@ const themeConfig: Config = {
   semiDark: false, // true, false
   layout: 'vertical', // 'vertical', 'collapsed', 'horizontal'
   layoutPadding: 24, // Common padding for header, content, footer layout components (in px)
-  compactContentWidth: 1440, 
+  compactContentWidth: 1440,
   navbar: {
     type: 'fixed', // 'fixed', 'static'
-    contentWidth: 'full',  
+    contentWidth: 'full',
     floating: false, //! true, false (This will not work in the Horizontal Layout)
-    detached: true, 
-    blur: true 
+    detached: true,
+    blur: true
   },
   contentWidth: 'full', // 'full', 'full'
   footer: {

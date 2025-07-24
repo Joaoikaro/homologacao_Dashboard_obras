@@ -28,12 +28,12 @@ const Layout = async (props: ChildrenType) => {
       <LayoutWrapper
         systemMode={systemMode}
         verticalLayout={
-          <VerticalLayout navigation={<Navigation mode={mode} />} navbar={<Navbar />} footer={<VerticalFooter />}>
+          <VerticalLayout navigation={<Navigation mode={mode} dictionary={undefined} />} navbar={<Navbar />} footer={<VerticalFooter />}>
             {children}
           </VerticalLayout>
         }
         horizontalLayout={
-          <HorizontalLayout header={<Header />} footer={<HorizontalFooter />}>
+          <HorizontalLayout header={<Header dictionary={undefined} />} footer={<HorizontalFooter />}>
             {children}
           </HorizontalLayout>
         }
