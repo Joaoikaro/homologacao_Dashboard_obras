@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Slider from '@mui/material/Slider'
@@ -18,12 +18,13 @@ import Divider from '@mui/material/Divider'
 import classnames from 'classnames'
 
 // Styles Imports
-import frontCommonStyles from '@views/front-pages/styles.module.css'
 
 // SVG Imports
 import Lines from '@assets/svg/front-pages/landing-page/Lines'
 import Curve from '@assets/svg/front-pages/landing-page/Curve'
 import Arrow from '@assets/svg/front-pages/landing-page/Arrow'
+
+import frontCommonStyles from '@views/front-pages/styles.module.css'
 import ElementTwo from '@/assets/svg/front-pages/landing-page/ElementTwo'
 
 const pricingPlans = [

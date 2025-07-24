@@ -4,7 +4,7 @@ import Link from 'next/link'
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import Grid from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid'
 
 // Third-party Imports
 import classnames from 'classnames'

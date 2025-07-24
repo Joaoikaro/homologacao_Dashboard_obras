@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import TextField from '@mui/material/TextField'
@@ -13,11 +13,12 @@ import Button from '@mui/material/Button'
 import classnames from 'classnames'
 
 // Hook Imports
-import { useIntersection } from '@/hooks/useIntersection'
 
 // SVG Imports
 import ElementTwo from '@assets/svg/front-pages/landing-page/ElementTwo'
 import Lines from '@assets/svg/front-pages/landing-page/Lines'
+
+import { useIntersection } from '@/hooks/useIntersection'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'

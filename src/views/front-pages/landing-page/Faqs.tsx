@@ -6,17 +6,18 @@ import Typography from '@mui/material/Typography'
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
-import Grid from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid'
 
 // Third-party Imports
 import classnames from 'classnames'
 
 // Hook Imports
+import Lines from '@assets/svg/front-pages/landing-page/Lines'
+
 import { useIntersection } from '@/hooks/useIntersection'
 
 // SVG Imports
 import ElementOne from '@/assets/svg/front-pages/landing-page/ElementOne'
-import Lines from '@assets/svg/front-pages/landing-page/Lines'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'

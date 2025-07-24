@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid'
 
 // Third-party Imports
 import classnames from 'classnames'

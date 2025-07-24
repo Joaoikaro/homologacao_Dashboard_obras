@@ -3,10 +3,12 @@ import { useEffect, useRef } from 'react'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid'
 import { styled } from '@mui/material/styles'
 
 // Type Imports
+import Lines from '@assets/svg/front-pages/landing-page/Lines'
+
 import type { ThemeColor } from '@core/types'
 
 // Hook Imports
@@ -14,7 +16,6 @@ import { useIntersection } from '@/hooks/useIntersection'
 
 // SVG Imports
 import ElementOne from '@/assets/svg/front-pages/landing-page/ElementOne'
-import Lines from '@assets/svg/front-pages/landing-page/Lines'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'

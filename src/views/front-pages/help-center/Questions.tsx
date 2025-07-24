@@ -1,7 +1,7 @@
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Breadcrumbs from '@mui/material/Breadcrumbs'
-import Grid from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
 import InputAdornment from '@mui/material/InputAdornment'
 import OutlinedInput from '@mui/material/OutlinedInput'

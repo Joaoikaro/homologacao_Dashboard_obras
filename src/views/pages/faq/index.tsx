@@ -4,7 +4,7 @@
 import { useState } from 'react'
 
 // MUI Imports
-import Grid from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid'
 
 // Type Imports
 import type { FaqType } from '@/types/pages/faqTypes'

@@ -3,13 +3,12 @@ import { useEffect, useRef } from 'react'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid'
 
 // Third-party Imports
 import classnames from 'classnames'
 
 // Hook Imports
-import { useIntersection } from '@/hooks/useIntersection'
 
 // SVG Imports
 import Lines from '@assets/svg/front-pages/landing-page/Lines'
@@ -19,6 +18,8 @@ import Edit from '@assets/svg/front-pages/landing-page/Edit'
 import Cube from '@assets/svg/front-pages/landing-page/Cube'
 import LifeBuoy from '@assets/svg/front-pages/landing-page/Lifebuoy'
 import Document from '@assets/svg/front-pages/landing-page/Document'
+
+import { useIntersection } from '@/hooks/useIntersection'
 
 // Styles Imports
 import styles from './styles.module.css'

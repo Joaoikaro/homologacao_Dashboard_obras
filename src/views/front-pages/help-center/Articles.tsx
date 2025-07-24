@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
-import Grid from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid'
 
 // SVG Imports
 import Gift from '@assets/svg/front-pages/help-center/Gift'

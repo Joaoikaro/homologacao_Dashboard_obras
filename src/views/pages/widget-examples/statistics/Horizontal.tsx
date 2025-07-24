@@ -1,5 +1,5 @@
 // MUI Imports
-import Grid from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid'
 
 // Types Imports
 import type { CardStatsHorizontalProps } from '@/types/pages/widgetTypes'
