@@ -7,42 +7,6 @@ import type { GridProps } from '@mui/material/Grid'
 // Type Imports
 import type { ThemeColor } from '@core/types'
 
-// Types of Horizontal Custom Inputs
-export type CustomInputHorizontalData = {
-  value: string
-  content?: ReactNode
-  isSelected?: boolean
-} & (
-  | {
-      meta: ReactNode
-      title: ReactNode
-    }
-  | {
-      meta?: never
-      title?: never
-    }
-  | {
-      title: ReactNode
-      meta?: never
-    }
-)
-export type CustomInputHorizontalProps = {
-  name: string
-  color?: ThemeColor
-  gridProps?: GridProps
-  data: CustomInputHorizontalData
-} & (
-  | {
-      type: 'checkbox'
-      selected: string[]
-      handleChange: (value: string) => void
-    }
-  | {
-      type: 'radio'
-      selected: string
-      handleChange: (value: string | ChangeEvent<HTMLInputElement>) => void
-    }
-)
 
 // Types of Vertical Custom Inputs
 export type CustomInputVerticalData = {

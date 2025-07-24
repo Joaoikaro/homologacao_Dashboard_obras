@@ -6,7 +6,7 @@ import type { VerticalNavState } from '../../contexts/verticalNavContext'
 import type { VerticalNavProps } from '../../components/vertical-menu/VerticalNav'
 
 // Util Imports
-import { horizontalNavClasses, menuClasses, verticalNavClasses } from '../../utils/menuClasses'
+import { menuClasses, verticalNavClasses } from '../../utils/menuClasses'
 
 type StyledVerticalNavProps = VerticalNavProps &
   Pick<VerticalNavState, 'isBreakpointReached' | 'collapsing' | 'expanding' | 'transitionDuration'>
@@ -62,7 +62,7 @@ const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
     }
   `}
 
-  &.${horizontalNavClasses.root} .${menuClasses.root} > ul {
+  &.${menuClasses.root} > ul {
     flex-direction: column;
     align-items: stretch;
   }

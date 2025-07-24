@@ -7,7 +7,7 @@ import type { Theme, SxProps, PaletteMode } from '@mui/material'
 
 import type { Settings } from '../contexts/settingsContext'
 
-export type Layout = 'vertical' | 'horizontal' | 'blank' | 'blankWithAppBar'
+export type Layout = 'vertical' | 'blank' | 'blankWithAppBar'
 
 export type Skin = 'default' | 'bordered'
 
@@ -23,7 +23,6 @@ export type ThemeColor = 'primary' | 'secondary' | 'error' | 'warning' | 'info' 
 
 export type VerticalNavToggle = 'accordion' | 'collapse'
 
-export type HorizontalMenuToggle = 'hover' | 'click'
 
 export type BlankLayoutProps = {
   children: ReactNode
@@ -66,7 +65,6 @@ export type NavLink = {
 }
 
 export type VerticalNavItemsType = (NavLink | NavGroup | NavSectionTitle)[]
-export type HorizontalNavItemsType = (NavLink | NavGroup)[]
 
 export type FooterProps = {
   sx?: SxProps<Theme>
@@ -90,19 +88,6 @@ export type VerticalLayoutProps = {
   }
 }
 
-export type HorizontalLayoutProps = {
-  appBar?: {
-    componentProps?: AppBarProps
-    content?: (props?: any) => ReactNode
-    branding?: (props?: any) => ReactNode
-  }
-  navMenu?: {
-    sx?: SxProps<Theme>
-    navItems?: HorizontalNavItemsType
-    content?: (props?: any) => ReactNode
-  }
-}
-
 export type LayoutProps = {
   hidden: boolean
   settings: Settings
@@ -112,5 +97,4 @@ export type LayoutProps = {
   scrollToTop?: (props?: any) => ReactNode
   saveSettings: (values: Settings) => void
   verticalLayoutProps: VerticalLayoutProps
-  horizontalLayoutProps?: HorizontalLayoutProps
 }

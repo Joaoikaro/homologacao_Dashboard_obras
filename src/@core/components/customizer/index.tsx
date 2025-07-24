@@ -33,7 +33,6 @@ import SkinDefault from '@core/svg/SkinDefault'
 import SkinBordered from '@core/svg/SkinBordered'
 import LayoutVertical from '@core/svg/LayoutVertical'
 import LayoutCollapsed from '@core/svg/LayoutCollapsed'
-import LayoutHorizontal from '@core/svg/LayoutHorizontal'
 import ContentCompact from '@core/svg/ContentCompact'
 import ContentWide from '@core/svg/ContentWide'
 import DirectionLtr from '@core/svg/DirectionLtr'
@@ -332,8 +331,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
                 </div>
               </div>
               {settings.mode === 'dark' ||
-                (settings.mode === 'system' && isSystemDark) ||
-                settings.layout === 'horizontal' ? null : (
+                (settings.mode === 'system' && isSystemDark) ? null : (
                 <div className='flex items-center justify-between'>
                   <label className='font-medium cursor-pointer' htmlFor='customizer-semi-dark'>
                     Semi Dark
@@ -374,17 +372,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
                       Collapsed
                     </p>
                   </div>
-                  <div className='flex flex-col items-start gap-0.5'>
-                    <div
-                      className={classnames(styles.itemWrapper, { [styles.active]: settings.layout === 'horizontal' })}
-                      onClick={() => handleChange('layout', 'horizontal')}
-                    >
-                      <LayoutHorizontal />
-                    </div>
-                    <p className={styles.itemLabel} onClick={() => handleChange('layout', 'horizontal')}>
-                      Horizontal
-                    </p>
-                  </div>
+
                 </div>
               </div>
               <div className='flex flex-col gap-2.5'>

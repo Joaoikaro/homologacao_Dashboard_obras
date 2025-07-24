@@ -1,7 +1,7 @@
 // React Imports
 import type { ReactNode } from 'react'
 
-export type Layout = 'vertical' | 'collapsed' | 'horizontal'
+export type Layout = 'vertical' | 'collapsed'
 
 export type Skin = 'default' | 'bordered'
 

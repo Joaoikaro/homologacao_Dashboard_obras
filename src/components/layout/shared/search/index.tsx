@@ -24,7 +24,6 @@ import NoResult from './NoResult'
 
 // Hook Imports
 import useVerticalNav from '@menu/hooks/useVerticalNav'
-import { useSettings } from '@core/hooks/useSettings'
 
 // Style Imports
 import './styles.css'
@@ -143,7 +142,6 @@ const NavSearch = () => {
   // Hooks
   const router = useRouter()
   const pathName = usePathname()
-  const { settings } = useSettings()
   const { isBreakpointReached } = useVerticalNav()
   const isAboveMdScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
 
@@ -208,7 +206,7 @@ const NavSearch = () => {
 
   return (
     <>
-      {isBreakpointReached || settings.layout === 'horizontal' ? (
+      {isBreakpointReached ? (
         <IconButton className='text-textPrimary' onClick={() => setOpen(true)}>
           <i className='ri-search-line text-textPrimary' />
         </IconButton>

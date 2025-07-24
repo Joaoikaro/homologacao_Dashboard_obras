@@ -57,13 +57,13 @@ const themeConfig: Config = {
   mode: 'dark', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
   semiDark: false, // true, false
-  layout: 'vertical', // 'vertical', 'collapsed', 'horizontal'
+  layout: 'vertical', // 'vertical' ou 'collapsed'
   layoutPadding: 24, // Common padding for header, content, footer layout components (in px)
   compactContentWidth: 1440,
   navbar: {
     type: 'fixed', // 'fixed', 'static'
     contentWidth: 'full',
-    floating: false, //! true, false (This will not work in the Horizontal Layout)
+    floating: false,
     detached: true,
     blur: true
   },
@@ -71,7 +71,7 @@ const themeConfig: Config = {
   footer: {
     type: 'static', // 'fixed', 'static'
     contentWidth: 'full', // 'full', 'full'
-    detached: true //! true, false (This will not work in the Horizontal Layout)
+    detached: true
   },
   disableRipple: false // true, false
   ,

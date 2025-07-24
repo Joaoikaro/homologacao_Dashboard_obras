@@ -35,10 +35,3 @@ export const verticalNavClasses = {
   collapsing: 'ts-collapsing',
   expanding: 'ts-expanding'
 }
-
-// Classes for horizontal navigation menu
-export const horizontalNavClasses = {
-  root: 'ts-horizontal-nav-root',
-  scrollWithContent: 'ts-scroll-with-content',
-  breakpointReached: 'ts-breakpoint-reached'
-}
