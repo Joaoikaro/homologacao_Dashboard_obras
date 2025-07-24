@@ -74,6 +74,8 @@ const themeConfig: Config = {
     detached: true //! true, false (This will not work in the Horizontal Layout)
   },
   disableRipple: false // true, false
+  ,
+  toastPosition: undefined
 }
 
 export default themeConfig
