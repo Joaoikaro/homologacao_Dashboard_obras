@@ -41,12 +41,18 @@ export const useAuthStore = create<IAuthStore>((set) => ({
   },
 
   signOut: () => {
+    console.log("Logout 1")
     localStorage.clear()
+    console.log("Logout 2")
     set({ signedIn: false, isSystemsStep: false, token: '' })
+    console.log("Logout3")
     queryClient.cancelQueries({ queryKey: ['loggedInUser'] })
+    console.log("Logout 4")
     queryClient.removeQueries({ queryKey: ['loggedInUser'] })
+    console.log("Logout 5")
 
     if (navigateFn) {
+      console.log("Logout 6")
       navigateFn('/login')
     }
   },

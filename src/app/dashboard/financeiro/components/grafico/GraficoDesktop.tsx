@@ -330,17 +330,9 @@ const GraficoDesktop = () => {
 
 
       {isLoading ? (
-        <ResponsiveContainer
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-          width="100%"
-          height={600}
-        >
-          <CircularProgress size={80} />
-        </ResponsiveContainer>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%' }}>
+          <CircularProgress size={70} />
+        </div>
       ) : (
         data && data.length > 0 && (
           <div style={{ overflowX: 'auto', width: '100%', overflowY: 'hidden' }}>

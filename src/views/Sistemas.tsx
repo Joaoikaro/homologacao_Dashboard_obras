@@ -54,7 +54,7 @@ export default function Sistemas() {
       useAuthStore.getState().setSignedIn(true)
       useAuthStore.getState().setIsSystemsStep(true)
 
-      router.replace('/')
+      router.replace('/dashboard/inicio')
     } catch (error) {
       console.error('Erro ao fazer login:', error)
       setLoading(false)

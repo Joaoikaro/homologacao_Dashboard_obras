@@ -1,5 +1,6 @@
 'use client'
 
+
 import classNames from 'classnames'
 
 import { useSettings } from '@core/hooks/useSettings'
@@ -21,6 +22,7 @@ export default function Page() {
     borderedLightIllustration,
     borderedLightIllustration
   )
+
 
   return (
     <div className='flex bs-full justify-center'>

@@ -27,7 +27,7 @@ httpClient.interceptors.request.use(
 httpClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    const signOut = useAuthStore.getState().signOut
+    const { signOut } = useAuthStore()
 
     if (error.response?.status === 401) {
       signOut()

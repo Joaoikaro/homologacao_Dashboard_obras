@@ -16,7 +16,7 @@ const CardStatVertical = (props: CardStatsVerticalProps) => {
     props
 
   return (
-    <Card className='bs-full'>
+    <Card className='bs-full' style={{ border: '1px solid var(--mui-palette-divider)' }}>
       <CardContent>
         {disableIcon && disableMenu ? null : (
           <div className='flex justify-between items-center is-full mbe-5'>

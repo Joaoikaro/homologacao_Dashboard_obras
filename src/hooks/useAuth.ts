@@ -9,8 +9,8 @@ import type { SignIn, Tenant } from '@/types/auth'
 import type { LoggedInUser } from '@/types/user'
 import storageKeys from '@/configs/storageKeys'
 import { AuthService } from '@/services/authService'
-import { UserService } from '@/services/userService'
 import { useUserLogadoInfo } from '@/store/userLogadoInfo'
+import { UserService } from '@/services/userService'
 
 export function useAuth() {
   const { signedIn, setSignedIn, isSystemsStep, setIsSystemsStep, token, setToken } = useAuthStore()

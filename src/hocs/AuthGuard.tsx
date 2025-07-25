@@ -26,7 +26,7 @@ const AuthGuard = ({ children }: Props) => {
 
 useEffect(() => {
   if (authChecked && !signedIn) {
-    router.replace('/login')
+    router.replace('/teste')
   }
 }, [authChecked, signedIn, router])
 
