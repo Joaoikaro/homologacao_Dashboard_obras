@@ -1,14 +1,15 @@
-import type { NavigateFunction } from 'react-router-dom'
+import type { NextRouter } from 'next/router'
+
 import { create } from 'zustand'
 
-import { useUserLogadoInfo } from '@/store/userLogadoInfo'
 import { queryClient } from '../lib/queryClient'
 import storageKeys from '@/configs/storageKeys'
+import { useUserLogadoInfo } from '@/store/userLogadoInfo'
 
-let navigateFn: NavigateFunction | null = null
+let router: NextRouter | null = null
 
-export const setNavigateFn = (fn: NavigateFunction) => {
-  navigateFn = fn
+export const setRouter = (r: NextRouter) => {
+  router = r
 }
 
 interface IAuthStore {
@@ -41,19 +42,15 @@ export const useAuthStore = create<IAuthStore>((set) => ({
   },
 
   signOut: () => {
-    console.log("Logout 1")
     localStorage.clear()
-    console.log("Logout 2")
     set({ signedIn: false, isSystemsStep: false, token: '' })
-    console.log("Logout3")
     queryClient.cancelQueries({ queryKey: ['loggedInUser'] })
-    console.log("Logout 4")
     queryClient.removeQueries({ queryKey: ['loggedInUser'] })
-    console.log("Logout 5")
 
-    if (navigateFn) {
-      console.log("Logout 6")
-      navigateFn('/login')
+    if (router) {
+      router.push('/login')
+    } else {
+      window.location.href = '/login'
     }
   },
 
@@ -65,8 +62,8 @@ export const useAuthStore = create<IAuthStore>((set) => ({
 
     set({ signedIn: true, token: '', isSystemsStep: false })
 
-    if (navigateFn) {
-      navigateFn('/sistemas')
+    if (router) {
+      router.push('/sistemas')
     } else {
       window.location.href = '/sistemas'
     }
