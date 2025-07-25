@@ -58,6 +58,8 @@ export class UserService {
   static async getLoggedInUser(): Promise<LoggedInUser> {
     const { data } = await httpClient.get<LoggedInUser>('/v1/account/usuario/listar/logado')
 
+    console.log("🚀 ~ UserService ~ getLoggedInUser ~ data:", data)
+
     return data
   }
 

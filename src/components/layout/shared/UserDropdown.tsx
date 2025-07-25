@@ -60,6 +60,8 @@ const UserDropdown = () => {
     const fetchUser = async () => {
       const usuarioLogado = await loggedInUser
 
+      console.log("🚀 ~ fetchUser ~ usuarioLogado:", usuarioLogado.data)
+
       if (usuarioLogado?.data) {
         setUser(usuarioLogado.data)
       }

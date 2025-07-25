@@ -60,6 +60,7 @@ export function useAuth() {
     queryKey: ['loggedInUser', token],
     enabled: !!token && signedIn,
     queryFn: async (): Promise<LoggedInUser> => {
+      console.log("chegou ao UseAuth")
       const user = await UserService.getLoggedInUser()
 
       setUser(user)
