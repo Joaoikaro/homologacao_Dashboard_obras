@@ -2,7 +2,7 @@
 'use client'
 
 // React Imports
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import type { MouseEvent } from 'react'
 
 // Next Imports
@@ -26,10 +26,9 @@ import { useAuthStore } from '@/store/useAuthStore';
 
 // Hook Imports
 import { useSettings } from '@core/hooks/useSettings'
-import { useUserLogadoInfo } from '@/store/userLogadoInfo'
 
 // Util Imports
-import { useAuth } from '@/hooks/useAuth'
+import { useLoggedUser } from '@/hooks/UseLoggedUser'
 
 // Styled component for badge content
 const BadgeContentSpan = styled('span')({
@@ -52,23 +51,7 @@ const UserDropdown = () => {
   const router = useRouter()
   const { settings } = useSettings()
   const { signOut } = useAuthStore()
-  const { user, setUser } = useUserLogadoInfo()
-
-  const { loggedInUser } = useAuth()
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const usuarioLogado = await loggedInUser
-
-      console.log("🚀 ~ fetchUser ~ usuarioLogado:", usuarioLogado.data)
-
-      if (usuarioLogado?.data) {
-        setUser(usuarioLogado.data)
-      }
-    }
-
-    fetchUser()
-  }, [setUser])
+  const { loggedUser } = useLoggedUser()
 
   const handleDropdownOpen = () => {
     !open ? setOpen(true) : setOpen(false)
@@ -133,9 +116,9 @@ const UserDropdown = () => {
                     <Avatar alt={''} src={''} />
                     <div className='flex items-start flex-col'>
                       <Typography className='font-medium' color='text.primary'>
-                        {user.nome || ''}
+                        {loggedUser.data?.nome || ''}
                       </Typography>
-                      <Typography variant='caption'>{user.email || ''}</Typography>
+                      <Typography variant='caption'>{loggedUser.data?.email || ''}</Typography>
                     </div>
                   </div>
                   <Divider className='mlb-1' />
