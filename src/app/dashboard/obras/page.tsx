@@ -1,17 +1,21 @@
 'use client'
 
-import { Grid } from '@mui/material'
+import { Grid } from '@mui/material';
 
-import { ReactQueryProvider } from '@/providers/ReactProvider';
+import FiltrosStatus from './components/dashboard/FiltrosStatus';
+import CardsObras from './components/dashboard/CardsObras';
 
 export default function Page() {
   return (
-    <ReactQueryProvider>
-
-      <Grid container spacing={6}>
-        Dashboard Obras
+    <Grid container spacing={6}>
+      <Grid size={{ xs: 12, md: 12, lg: 12 }} >
+        <FiltrosStatus />
       </Grid>
-    </ReactQueryProvider>
+
+      <Grid size={{ xs: 12, md: 12, lg: 12 }}>
+        <CardsObras />
+      </Grid >
+    </Grid>
   );
 }
 

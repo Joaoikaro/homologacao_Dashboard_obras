@@ -6,7 +6,7 @@ import GraficoDesktop from './grafico/GraficoDesktop';
 import GraficoMobile from './grafico/GraficoMobile';
 
 const GraficoFinanceiro = () => {
- const theme = useTheme()
+  const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
 
 
